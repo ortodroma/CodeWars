@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Cockroach.cockroachSpeed(1.08));
+        char l;
+        System.out.println(AllStarCodeChallenge_18.strCount("Hello",'l'));
     }
 }
