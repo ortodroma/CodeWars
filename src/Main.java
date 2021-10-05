@@ -1,6 +1,9 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        char l;
-        System.err.println(MakeUpperCase.MakeUpperCase("Hello"));
+        int[] arr = WhatIsBetween.between(7, 12);
+        System.err.println(Arrays.toString(WhatIsBetween.between(7, 12)));
+
     }
 }
