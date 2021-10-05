@@ -1,5 +1,9 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        System.err.println(WhatIsBetween.between(7,12));
+        int[] arr = WhatIsBetween.between(7, 12);
+        System.err.println(Arrays.toString(WhatIsBetween.between(7,12)));
+
     }
 }
