@@ -10,4 +10,8 @@ public class TwiceAsOld {
         }
         return raz;
     }
+
+    public static void main(String[]args){
+        System.out.println(TwiceAsOld.TwiceAsOld(45,13));
+    };
 }
