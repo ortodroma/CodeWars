@@ -17,15 +17,15 @@ public class RectangleIntersect {
         int minYHeight = Math.min(firstRectangle.y + firstRectangle.height, secondRectangle.y + secondRectangle.height);
 
 
-//        if (firstRectangle.x < secondRectangle.y) {
-//            if (firstRectangle.x < secondRectangle.x && firstRectangle.y + firstRectangle.height > secondRectangle.y + secondRectangle.height) {
-//                ring = true;
-//            } else if (secondRectangle.x < firstRectangle.x && secondRectangle.y + secondRectangle.height > firstRectangle.y + firstRectangle.height) {
-//                ring = true;
-//            }
-//        }
+        if (firstRectangle.x < secondRectangle.y) {
+            if (firstRectangle.x < secondRectangle.x && firstRectangle.y + firstRectangle.height > secondRectangle.y + secondRectangle.height) {
+                ring = true;
+            }
+        } else if (secondRectangle.x < firstRectangle.x && secondRectangle.y + secondRectangle.height > firstRectangle.y + firstRectangle.height) {
+            ring = true;
+        }
 
-        if (maxX > minXWidth && maxY > minYHeight ) {
+        if (maxX > minXWidth && maxY > minYHeight || ring == true) {
             return false;
         }
         return true;
