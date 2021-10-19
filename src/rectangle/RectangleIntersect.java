@@ -5,9 +5,17 @@ import java.awt.*;
 
 public class RectangleIntersect {
 
+    public static boolean rectangleBuiltInIntersect(Rectangle firstRectangle, Rectangle secondRectangle) {
+
+        return firstRectangle.intersects(secondRectangle);
+
+    }
+
 
     public static boolean rectangleIntersect(Rectangle firstRectangle, Rectangle secondRectangle) {
-
+        if (firstRectangle.isEmpty() || secondRectangle.isEmpty()) {
+            throw new Error("Rectangle has width or height 0");
+        }
 
         boolean ring = false;
 
@@ -25,10 +33,7 @@ public class RectangleIntersect {
             ring = true;
         }
 
-        if (maxX > minXWidth && maxY > minYHeight || ring == true) {
-            return false;
-        }
-        return true;
+        return (maxX <= minXWidth || maxY <= minYHeight) && !ring;
     }
 
     public static void main(String[] args) {
@@ -56,13 +61,10 @@ public class RectangleIntersect {
         System.out.println(RectangleIntersect.rectangleIntersect(seventhRectangle, eighthRectangle));//false
         System.out.println(RectangleIntersect.rectangleIntersect(ninthRectangle, tenthRectangle));//false
         System.out.println(RectangleIntersect.rectangleIntersect(eleventhRectangle, twelfthRectangle));//false
+
+        System.out.println(RectangleIntersect.rectangleBuiltInIntersect(firstRectangle, secondRectangle));
     }
-//        boolean intersect = false;
-//        Rectangle rec1 = new Rectangle(1, 1, 7, 7);
-//        Rectangle rec2 = new Rectangle(2, 2, 4, 4);
-//
-//        intersect = rec1.intersects(rec2);
-//        System.out.println(intersect);
+
 
 }
 
