@@ -11,7 +11,6 @@ public class RectangleIntersect {
 
     }
 
-
     public static boolean rectangleIntersect(Rectangle firstRectangle, Rectangle secondRectangle) {
         if (firstRectangle.isEmpty() || secondRectangle.isEmpty()) {
             throw new Error("Rectangle has width or height 0");
@@ -19,17 +18,21 @@ public class RectangleIntersect {
 
         boolean ring = false;
 
-        int maxX = Math.max(firstRectangle.x, secondRectangle.x);
-        int minXWidth = Math.min(firstRectangle.x + firstRectangle.width, secondRectangle.x + secondRectangle.width);
-        int maxY = Math.max(firstRectangle.y, secondRectangle.y);
-        int minYHeight = Math.min(firstRectangle.y + firstRectangle.height, secondRectangle.y + secondRectangle.height);
+        int firstRectangleXWidth = firstRectangle.x + firstRectangle.width;
+        int secondRectangleXWidth = secondRectangle.x + secondRectangle.width;
+        int firstRectangleYHeight = firstRectangle.y + firstRectangle.height;
+        int secondRectangleYHeight = secondRectangle.y + secondRectangle.height;
 
+        int maxX = Math.max(firstRectangle.x, secondRectangle.x);
+        int minXWidth = Math.min(firstRectangleXWidth, secondRectangleXWidth);
+        int maxY = Math.max(firstRectangle.y, secondRectangle.y);
+        int minYHeight = Math.min(firstRectangleYHeight, secondRectangleYHeight);
 
         if (firstRectangle.x < secondRectangle.y) {
-            if (firstRectangle.x < secondRectangle.x && firstRectangle.y + firstRectangle.height > secondRectangle.y + secondRectangle.height) {
+            if (firstRectangle.x < secondRectangle.x && firstRectangleYHeight > secondRectangleYHeight) {
                 ring = true;
             }
-        } else if (secondRectangle.x < firstRectangle.x && secondRectangle.y + secondRectangle.height > firstRectangle.y + firstRectangle.height) {
+        } else if (secondRectangle.x < firstRectangle.x && secondRectangleYHeight > firstRectangleYHeight) {
             ring = true;
         }
 
@@ -55,6 +58,8 @@ public class RectangleIntersect {
         Rectangle eleventhRectangle = new Rectangle(2, 2, 1, 1);
         Rectangle twelfthRectangle = new Rectangle(1, 1, 5, 5);
 
+        System.out.println(RectangleIntersect.rectangleBuiltInIntersect(firstRectangle, secondRectangle));
+
         System.out.println(RectangleIntersect.rectangleIntersect(firstRectangle, secondRectangle));//true
         System.out.println(RectangleIntersect.rectangleIntersect(thirdRectangle, fourthRectangle));//true
         System.out.println(RectangleIntersect.rectangleIntersect(fifthRectangle, sixthRectangle));//false
@@ -62,10 +67,6 @@ public class RectangleIntersect {
         System.out.println(RectangleIntersect.rectangleIntersect(ninthRectangle, tenthRectangle));//false
         System.out.println(RectangleIntersect.rectangleIntersect(eleventhRectangle, twelfthRectangle));//false
 
-        System.out.println(RectangleIntersect.rectangleBuiltInIntersect(firstRectangle, secondRectangle));
     }
 
-
 }
-
-
