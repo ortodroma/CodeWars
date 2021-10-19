@@ -6,78 +6,65 @@ import java.awt.*;
 public class RectangleIntersect {
 
 
-    public static boolean rectangleIntersect(CustomRectangle firstRectangle, CustomRectangle secondRectangle) {
-        int firstRectangleX = firstRectangle.getX();
-        int firstRectangleY = firstRectangle.getY();
-        int firstRectangleWidth = firstRectangle.getWidth();
-        int firstRectangleHeight = firstRectangle.getHeight();
+    public static boolean rectangleIntersect(Rectangle firstRectangle, Rectangle secondRectangle) {
 
-        int secondRectangleX = secondRectangle.getX();
-        int secondRectangleY = secondRectangle.getY();
-        int secondRectangleWidth = secondRectangle.getWidth();
-        int secondRectangleHeight = secondRectangle.getHeight();
 
         boolean intersect = false;
+        boolean ring = false;
 
-        CustomRectangle leftRectangle, rightRectangle;
+        int maxX = Math.max(firstRectangle.x, secondRectangle.y);
+        int minXWidth = Math.min(firstRectangle.x + firstRectangle.width, secondRectangle.x + secondRectangle.width);
+        int maxY = Math.max(firstRectangle.y, secondRectangle.y);
+        int minYHeight = Math.min(firstRectangle.y + firstRectangle.height, secondRectangle.y + secondRectangle.height);
 
-        if (firstRectangleX < secondRectangleX) {
-            leftRectangle = firstRectangle;
-            rightRectangle = secondRectangle;
-        } else {
-            leftRectangle = secondRectangle;
-            rightRectangle = firstRectangle;
-        }
+        if (firstRectangle.x < secondRectangle.y) {
+            if (firstRectangle.x < secondRectangle.x && firstRectangle.y + firstRectangle.height > secondRectangle.y + secondRectangle.height) {
+                ring = true;
+            } else if (secondRectangle.x < firstRectangle.x && secondRectangle.y + secondRectangle.height > firstRectangle.y + firstRectangle.height) {
+                ring = true;
+            }
 
-
-        if (firstRectangleX + firstRectangleWidth > secondRectangleX
-                && firstRectangleY + firstRectangleHeight > secondRectangleY
-                && firstRectangleY + firstRectangleHeight < secondRectangleY + secondRectangleHeight) {
-            intersect = true;
+            if (maxX < minXWidth && maxY < minYHeight) {
+                intersect = true;
+            }
 
         }
         return intersect;
     }
 
+        public static void main (String[]args){
+            Rectangle firstRectangle = new Rectangle(1, 1, 3, 3);
+            Rectangle secondRectangle = new Rectangle(2, 2, 4, 4);
 
+            Rectangle thirdRectangle = new Rectangle(1, 3, 4, 4);
+            Rectangle fourthRectangle = new Rectangle(3, 1, 5, 5);
 
+            Rectangle fifthRectangle = new Rectangle(1, 1, 1, 1);
+            Rectangle sixthRectangle = new Rectangle(3, 3, 2, 2);
 
+            Rectangle seventhRectangle = new Rectangle(3, 3, 2, 2);
+            Rectangle eighthRectangle = new Rectangle(1, 1, 1, 1);
 
+            Rectangle ninthRectangle = new Rectangle(1, 1, 5, 5);
+            Rectangle tenthRectangle = new Rectangle(2, 2, 1, 1);
 
-    public static void main(String[] args) {
-        CustomRectangle firstRectangle = new CustomRectangle(1, 1, 3, 3);
-        CustomRectangle secondRectangle = new CustomRectangle(2, 2, 4, 4);
+            Rectangle eleventhRectangle = new Rectangle(2, 2, 1, 1);
+            Rectangle twelfthRectangle = new Rectangle(1, 1, 5, 5);
 
-
-        CustomRectangle thirdRectangle = new CustomRectangle(3, 1, 4, 4);
-        CustomRectangle fourthRectangle = new CustomRectangle(1, 3, 5, 5);
-
-        CustomRectangle fifthRectangle = new CustomRectangle(1, 1, 1, 1);
-        CustomRectangle sixthRectangle = new CustomRectangle(3, 3, 2, 2);
-
-        CustomRectangle seventhRectangle = new CustomRectangle(1, 1, 5, 5);
-        CustomRectangle eighthRectangle = new CustomRectangle(2, 2, 1, 1);
-
-        CustomRectangle ninthRectangle = new CustomRectangle(3, 3, 2, 2);
-        CustomRectangle tenthRectangle = new CustomRectangle(1, 1, 1, 1);
-
-        CustomRectangle eleventhRectangle = new CustomRectangle(2, 2, 1, 1);
-        CustomRectangle twelfthRectangle = new CustomRectangle(1, 1, 5, 5);
-
-        System.out.println(RectangleIntersect.rectangleIntersect(firstRectangle, secondRectangle));//true
-        System.out.println(RectangleIntersect.rectangleIntersect(thirdRectangle, fourthRectangle));//true
-        System.out.println(RectangleIntersect.rectangleIntersect(fifthRectangle, sixthRectangle));//false
-        System.out.println(RectangleIntersect.rectangleIntersect(seventhRectangle, eighthRectangle));//false
-        System.out.println(RectangleIntersect.rectangleIntersect(ninthRectangle, tenthRectangle));//false
-        System.out.println(RectangleIntersect.rectangleIntersect(eleventhRectangle, twelfthRectangle));//false
-
+            System.out.println(RectangleIntersect.rectangleIntersect(firstRectangle, secondRectangle));//true
+            System.out.println(RectangleIntersect.rectangleIntersect(thirdRectangle, fourthRectangle));//true
+            System.out.println(RectangleIntersect.rectangleIntersect(fifthRectangle, sixthRectangle));//false
+            System.out.println(RectangleIntersect.rectangleIntersect(seventhRectangle, eighthRectangle));//false
+            System.out.println(RectangleIntersect.rectangleIntersect(ninthRectangle, tenthRectangle));//false
+            System.out.println(RectangleIntersect.rectangleIntersect(eleventhRectangle, twelfthRectangle));//false
+        }
 //        boolean intersect = false;
 //        Rectangle rec1 = new Rectangle(1, 1, 7, 7);
 //        Rectangle rec2 = new Rectangle(2, 2, 4, 4);
 //
 //        intersect = rec1.intersects(rec2);
 //        System.out.println(intersect);
-    }
+
 }
 
 
